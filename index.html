@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Happy Birthday, Hubby!❤️</title>
+<title>Happy Birthday, Hubby! ❤️</title>
 
 <style>
 
@@ -28,7 +28,7 @@ background:black;
 #mainContent{
 height:100vh;
 background:
-linear-gradient(rgba(139,30,47,.4),rgba(245,230,211,.4)),
+linear-gradient(rgba(139,30,47,.45),rgba(245,230,211,.35)),
 url('assets/bg.jpg');
 background-size:cover;
 background-position:center;
@@ -63,7 +63,7 @@ border:none;
 border-radius:12px;
 text-align:center;
 margin-top:10px;
-font-family:"Times New Roman", Times, serif;
+font-size:15px;
 }
 
 button{
@@ -75,7 +75,7 @@ background:#ff4d6d;
 color:white;
 cursor:pointer;
 transition:.3s;
-font-family:"Times New Roman", Times, serif;
+font-size:15px;
 }
 
 button:hover{
@@ -109,7 +109,34 @@ opacity:0;
 }
 }
 
-/* GIFT SCREEN */
+/* FLOATING BUBBLES */
+
+.bubble{
+position:fixed;
+bottom:-100px;
+border-radius:50%;
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(4px);
+animation:bubbleFloat linear forwards;
+pointer-events:none;
+z-index:999;
+}
+
+@keyframes bubbleFloat{
+0%{
+transform:translateY(0) scale(1);
+opacity:0;
+}
+20%{
+opacity:1;
+}
+100%{
+transform:translateY(-120vh) scale(1.6);
+opacity:0;
+}
+}
+
+/* GIFT */
 
 #giftScreen{
 display:none;
@@ -125,7 +152,6 @@ overflow:hidden;
 }
 
 .gift-container{
-position:relative;
 text-align:center;
 animation:floatGift 2s ease-in-out infinite;
 }
@@ -133,16 +159,12 @@ animation:floatGift 2s ease-in-out infinite;
 #giftBox{
 width:300px;
 max-width:85vw;
-}
-
-#ribbon{
-position:absolute;
-top:35%;
-left:50%;
-transform:translate(-50%,-50%);
-width:180px;
 cursor:pointer;
 transition:.3s;
+}
+
+#giftBox:hover{
+transform:scale(1.03);
 }
 
 .giftText{
@@ -308,14 +330,6 @@ object-fit:contain;
 border-radius:15px;
 }
 
-/* PHOTO 1 */
-
-#photo1 img{
-width:100%;
-max-width:350px;
-height:auto;
-}
-
 /* VIDEO */
 
 video{
@@ -325,10 +339,19 @@ border-radius:15px;
 background:black;
 }
 
-/* VOICE BUTTON */
+/* COUNTER */
+
+#loveCounter{
+margin-bottom:20px;
+font-size:24px;
+line-height:1.8;
+text-shadow:0 0 12px rgba(255,255,255,.6);
+}
+
+/* BUTTON */
 
 .voice-btn{
-margin-top:15px;
+margin-top:18px;
 background:#ff758f;
 }
 
@@ -347,8 +370,6 @@ animation:blink .7s infinite;
 border-color:transparent;
 }
 }
-
-/* FADE */
 
 @keyframes fadeIn{
 from{
@@ -392,7 +413,6 @@ padding:18px;
 video{
 width:100%;
 max-width:100%;
-height:auto;
 }
 
 p{
@@ -401,6 +421,10 @@ line-height:1.6;
 }
 
 .giftText{
+font-size:18px;
+}
+
+#loveCounter{
 font-size:18px;
 }
 
@@ -429,7 +453,7 @@ font-size:18px;
 
 </section>
 
-<!-- GIFT SCREEN -->
+<!-- GIFT -->
 
 <section id="giftScreen">
 
@@ -437,10 +461,8 @@ font-size:18px;
 
 <img src="assets/giftbox.png" id="giftBox">
 
-<img src="assets/ribbon.png" id="ribbon">
-
 <p class="giftText">
-Tap the ribbon 3 times to open your surprise ❤️
+Tap the gift 3 times to open your surprise ❤️
 </p>
 
 </div>
@@ -459,17 +481,25 @@ Different places, same love 🌎❤️
 
 <div class="menu">
 
+<!-- ICON 1 LETTER -->
+
 <div class="card" onclick="openPopup('letter')">
 <img src="assets/icon1.png">
 </div>
+
+<!-- ICON 2 VIDEO -->
 
 <div class="card" onclick="openPopup('video')">
 <img src="assets/icon2.png">
 </div>
 
+<!-- ICON 3 MEMORIES -->
+
 <div class="card" onclick="openPopup('memories')">
 <img src="assets/icon3.png">
 </div>
+
+<!-- ICON 4 PHOTO + VOICE -->
 
 <div class="card" onclick="openPopup('photo1')">
 <img src="assets/icon4.png">
@@ -488,16 +518,12 @@ Different places, same love 🌎❤️
 
 <p>
 Happy birthday, loveyy ❤️ Another year older but still my favorite person ever.
-I know we’re far from each other rn, and I wish I could hug you and celebrate with
-you today. But even with the distance, I hope you can still feel how much I love 
-and appreciate you. Thank you for being patient with us and for making me feel loved 
-every single day. I’m always cheering for you from afar. Please take care of yourself
-and enjoy your day, okay? I miss you so much. 🥺❤️
+I know we’re far from each other rn, and I wish I could hug you and celebrate with you today.
+But even with the distance, I hope you can still feel how much I love and appreciate you.
+Thank you for being patient with us and for making me feel loved every single day.
+I’m always cheering for you from afar. Please take care of yourself and enjoy your day, okay?
+I miss you so much 🥺❤️
 </p>
-
-<button class="voice-btn" onclick="playVoice()">
-Play My Voice ❤️
-</button>
 
 </div>
 </div>
@@ -529,27 +555,29 @@ Play My Voice ❤️
 
 </div>
 
+<h2 id="loveCounter">
+❤️ Loading our love story...
+</h2>
+
 <p>
 You are the reason I smile so easily ❤️<br>
 Everything feels better because of you ❤️<br>
 I’ll never stop choosing you ❤️<br><br>
 
-I hope you’re doing okay today. I just wanted to remind you that
-you’re doing better than you think, and I’m so proud of you in ways 
-I don’t always say. You make my days brighter just by being in my life, 
-even from a distance. I hope today gives you a reason to smile, even a 
-small one, because you truly deserve it. I really love you ♡
+I hope you’re doing okay today.
+I’m always proud of you and I’ll always stay by your side no matter how far we are from each other.
+Thank you for making me feel safe, loved, and happy every single day ❤️
 </p>
 
 </div>
 </div>
 
-<!-- PHOTO -->
+<!-- PHOTO + VOICE -->
 
 <div id="photo1" class="section">
 <div class="box">
 
-<img src="assets/photo1.jpg">
+<img src="assets/photo1.jpg" style="max-width:350px;">
 
 <p style="margin-top:15px;">
 My handsome baby ❤️
@@ -558,6 +586,10 @@ My handsome baby ❤️
 <p>
 You are my peace, my love, and my forever person ❤️
 </p>
+
+<button class="voice-btn" onclick="playVoice()">
+Play My Voice ❤️
+</button>
 
 </div>
 </div>
@@ -584,7 +616,7 @@ const music=document.getElementById("bgMusic");
 const voice=document.getElementById("voiceMessage");
 const video=document.getElementById("greetingVideo");
 
-/* PASSWORD HEARTS */
+/* FLOATING HEARTS */
 
 for(let i=0;i<15;i++){
 
@@ -640,15 +672,15 @@ document.querySelector(".password-box")
 
 }
 
-/* GIFT OPENING */
+/* GIFT TAP */
 
-let ribbonClicks=0;
+let giftClicks=0;
 
-const ribbon=document.getElementById("ribbon");
+const giftBox=document.getElementById("giftBox");
 
-ribbon.addEventListener("click",()=>{
+giftBox.addEventListener("click",()=>{
 
-ribbonClicks++;
+giftClicks++;
 
 document.querySelector(".gift-container")
 .classList.add("shake");
@@ -658,9 +690,7 @@ document.querySelector(".gift-container")
 .classList.remove("shake");
 },400);
 
-if(ribbonClicks>=3){
-
-ribbon.style.display="none";
+if(giftClicks>=3){
 
 launchHearts();
 
@@ -709,8 +739,6 @@ heart.remove();
 }
 
 }
-
-/* HEART FLOAT */
 
 const style=document.createElement("style");
 
@@ -768,13 +796,81 @@ note.remove();
 
 }
 
-/* PLAY VOICE */
+/* VOICE */
 
 function playVoice(){
 
 voice.play();
 
 }
+
+/* LOVE COUNTER */
+/* SEPTEMBER 25 2026 */
+
+const startDate = new Date("September 25, 2026 00:00:00");
+
+function updateLoveCounter(){
+
+const now = new Date();
+
+const diff = Math.abs(now - startDate);
+
+const days = Math.floor(diff / (1000*60*60*24));
+
+const hours = Math.floor(
+(diff / (1000*60*60)) % 24
+);
+
+const minutes = Math.floor(
+(diff / (1000*60)) % 60
+);
+
+const seconds = Math.floor(
+(diff / 1000) % 60
+);
+
+document.getElementById("loveCounter").innerHTML = `
+❤️ We've been together for ❤️ <br>
+${days} days ${hours} hours ${minutes} minutes ${seconds} seconds
+`;
+
+}
+
+setInterval(updateLoveCounter,1000);
+
+updateLoveCounter();
+
+/* FLOATING BUBBLES */
+
+function createBubbles(){
+
+setInterval(()=>{
+
+const bubble=document.createElement("div");
+
+bubble.classList.add("bubble");
+
+const size=15+Math.random()*40;
+
+bubble.style.width=size+"px";
+bubble.style.height=size+"px";
+
+bubble.style.left=Math.random()*100+"vw";
+
+bubble.style.animationDuration=
+(6+Math.random()*5)+"s";
+
+document.body.appendChild(bubble);
+
+setTimeout(()=>{
+bubble.remove();
+},12000);
+
+},800);
+
+}
+
+createBubbles();
 
 /* OPEN POPUP */
 
