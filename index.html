@@ -18,10 +18,13 @@ font-family:"Times New Roman", Times, serif;
 body{
 color:white;
 overflow-x:hidden;
+background:black;
 }
 
-/* BACKGROUND (STAYS SAME ALWAYS) */
+/* BACKGROUND */
+
 #passwordScreen,
+#giftScreen,
 #mainContent{
 height:100vh;
 background:
@@ -32,11 +35,14 @@ background-position:center;
 }
 
 /* PASSWORD */
+
 #passwordScreen{
 display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
+position:relative;
+overflow:hidden;
 }
 
 .password-box{
@@ -46,6 +52,8 @@ border-radius:25px;
 backdrop-filter:blur(12px);
 width:300px;
 text-align:center;
+box-shadow:0 0 20px rgba(255,255,255,.2);
+z-index:2;
 }
 
 input{
@@ -66,22 +74,137 @@ border-radius:20px;
 background:#ff4d6d;
 color:white;
 cursor:pointer;
+transition:.3s;
 font-family:"Times New Roman", Times, serif;
 }
 
+button:hover{
+transform:scale(1.05);
+}
+
+#error{
+margin-top:10px;
+}
+
+/* FLOATING HEARTS */
+
+.floating-heart{
+position:absolute;
+width:25px;
+opacity:.8;
+animation:floatHeart linear infinite;
+}
+
+@keyframes floatHeart{
+0%{
+transform:translateY(100vh);
+opacity:0;
+}
+30%{
+opacity:1;
+}
+100%{
+transform:translateY(-120vh);
+opacity:0;
+}
+}
+
+/* GIFT SCREEN */
+
+#giftScreen{
+display:none;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+z-index:9999;
+overflow:hidden;
+}
+
+.gift-container{
+position:relative;
+text-align:center;
+animation:floatGift 2s ease-in-out infinite;
+}
+
+#giftBox{
+width:300px;
+max-width:85vw;
+}
+
+#ribbon{
+position:absolute;
+top:35%;
+left:50%;
+transform:translate(-50%,-50%);
+width:180px;
+cursor:pointer;
+transition:.3s;
+}
+
+.giftText{
+margin-top:20px;
+font-size:22px;
+text-shadow:0 0 10px rgba(0,0,0,.5);
+}
+
+@keyframes floatGift{
+0%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0);}
+}
+
+/* SHAKE */
+
+.shake{
+animation:shake .4s;
+}
+
+@keyframes shake{
+0%{transform:translateX(0);}
+25%{transform:translateX(-5px);}
+50%{transform:translateX(5px);}
+75%{transform:translateX(-5px);}
+100%{transform:translateX(0);}
+}
+
 /* MAIN */
+
 #mainContent{
 display:none;
 padding:20px;
+overflow-y:auto;
+}
+
+/* TITLE */
+
+.main-title{
+text-align:center;
+margin-top:15px;
+font-size:38px;
+text-shadow:0 0 15px rgba(255,255,255,.6);
+animation:fadeIn 2s ease;
+}
+
+.subtitle{
+text-align:center;
+margin-top:10px;
+font-size:18px;
+opacity:.9;
 }
 
 /* MENU */
+
 .menu{
 display:flex;
 justify-content:center;
 gap:20px;
 flex-wrap:wrap;
-margin-top:30px;
+margin-top:40px;
+animation:fadeIn 2s ease;
 }
 
 .card{
@@ -92,6 +215,12 @@ width:110px;
 cursor:pointer;
 backdrop-filter:blur(10px);
 text-align:center;
+transition:.3s;
+box-shadow:0 0 15px rgba(255,255,255,.1);
+}
+
+.card:hover{
+transform:translateY(-8px) scale(1.05);
 }
 
 .card img{
@@ -99,7 +228,32 @@ width:55px;
 height:55px;
 }
 
+/* LOVE NOTES */
+
+.love-note{
+position:fixed;
+font-size:14px;
+opacity:.5;
+pointer-events:none;
+animation:floatText 10s linear infinite;
+}
+
+@keyframes floatText{
+0%{
+transform:translateY(100vh);
+opacity:0;
+}
+20%{
+opacity:.7;
+}
+100%{
+transform:translateY(-120vh);
+opacity:0;
+}
+}
+
 /* POPUPS */
+
 .section{
 display:none;
 position:fixed;
@@ -113,10 +267,12 @@ align-items:center;
 padding:20px;
 z-index:9999;
 cursor:pointer;
+overflow-y:auto;
 }
 
 .section.active{
 display:flex;
+animation:fadeIn .5s ease;
 }
 
 .box{
@@ -127,16 +283,24 @@ max-width:800px;
 text-align:center;
 backdrop-filter:blur(10px);
 cursor:default;
+box-shadow:0 0 20px rgba(255,255,255,.1);
+}
+
+.box p{
+line-height:1.8;
 }
 
 /* GALLERY */
+
 .gallery{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
 gap:10px;
+margin-bottom:20px;
 }
 
-/* IMAGES NEVER CUT */
+/* IMAGES */
+
 img{
 max-width:100%;
 height:auto;
@@ -144,16 +308,16 @@ object-fit:contain;
 border-radius:15px;
 }
 
-/* ICON 4 FIX */
+/* PHOTO 1 */
+
 #photo1 img{
 width:100%;
 max-width:350px;
 height:auto;
-object-fit:contain;
-border-radius:15px;
 }
 
 /* VIDEO */
+
 video{
 width:320px;
 max-width:90%;
@@ -161,12 +325,53 @@ border-radius:15px;
 background:black;
 }
 
-/* 📱 IPHONE 11 PRO FIX */
-@media (max-width: 430px) and (max-height: 932px){
+/* VOICE BUTTON */
+
+.voice-btn{
+margin-top:15px;
+background:#ff758f;
+}
+
+/* TYPING */
+
+.typing{
+border-right:2px solid white;
+white-space:nowrap;
+overflow:hidden;
+display:inline-block;
+animation:blink .7s infinite;
+}
+
+@keyframes blink{
+50%{
+border-color:transparent;
+}
+}
+
+/* FADE */
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* MOBILE */
+
+@media (max-width:430px){
 
 .password-box{
 width:90%;
 padding:20px;
+}
+
+.main-title{
+font-size:28px;
 }
 
 .card{
@@ -195,6 +400,10 @@ font-size:14px;
 line-height:1.6;
 }
 
+.giftText{
+font-size:18px;
+}
+
 }
 
 </style>
@@ -203,20 +412,50 @@ line-height:1.6;
 <body>
 
 <!-- PASSWORD -->
+
 <section id="passwordScreen">
+
 <div class="password-box">
 
-<h3>Enter Password</h3>
+<h3>Enter Password ❤️</h3>
+
 <input type="password" id="password">
+
 <button onclick="checkPassword()">Unlock</button>
 
 <p id="error"></p>
 
 </div>
+
+</section>
+
+<!-- GIFT SCREEN -->
+
+<section id="giftScreen">
+
+<div class="gift-container">
+
+<img src="assets/giftbox.png" id="giftBox">
+
+<img src="assets/ribbon.png" id="ribbon">
+
+<p class="giftText">
+Tap the ribbon 3 times to open your surprise ❤️
+</p>
+
+</div>
+
 </section>
 
 <!-- MAIN -->
+
 <div id="mainContent">
+
+<h1 class="main-title">Happy Birthday Hubby ❤️</h1>
+
+<p class="subtitle">
+Different places, same love 🌎❤️
+</p>
 
 <div class="menu">
 
@@ -239,8 +478,14 @@ line-height:1.6;
 </div>
 
 <!-- LETTER -->
+
 <div id="letter" class="section">
 <div class="box">
+
+<h2 class="typing">Happy Birthday Lovey ❤️</h2>
+
+<br><br>
+
 <p>
 Happy birthday, loveyy ❤️ Another year older but still my favorite person ever.
 I know we’re far from each other rn, and I wish I could hug you and celebrate with
@@ -249,28 +494,39 @@ and appreciate you. Thank you for being patient with us and for making me feel l
 every single day. I’m always cheering for you from afar. Please take care of yourself
 and enjoy your day, okay? I miss you so much. 🥺❤️
 </p>
+
+<button class="voice-btn" onclick="playVoice()">
+Play My Voice ❤️
+</button>
+
 </div>
 </div>
 
 <!-- VIDEO -->
+
 <div id="video" class="section">
 <div class="box">
+
 <video id="greetingVideo" controls playsinline preload="auto">
 <source src="assets/greeting-video.mp4" type="video/mp4">
 </video>
+
 </div>
 </div>
 
 <!-- MEMORIES -->
+
 <div id="memories" class="section">
 <div class="box">
 
 <div class="gallery">
+
 <img src="assets/photo2.jpg">
 <img src="assets/photo3.jpg">
 <img src="assets/photo4.jpg">
 <img src="assets/photo5.jpg">
 <img src="assets/photo6.jpg">
+
 </div>
 
 <p>
@@ -288,62 +544,267 @@ small one, because you truly deserve it. I really love you ♡
 </div>
 </div>
 
-<!-- PHOTO 1 -->
+<!-- PHOTO -->
+
 <div id="photo1" class="section">
 <div class="box">
+
 <img src="assets/photo1.jpg">
-<p>My handsome baby ❤️</p>
-<p>You are my peace, my love, and my forever person ❤️</p>
+
+<p style="margin-top:15px;">
+My handsome baby ❤️
+</p>
+
+<p>
+You are my peace, my love, and my forever person ❤️
+</p>
+
 </div>
 </div>
 
 </div>
 
 <!-- MUSIC -->
+
 <audio id="bgMusic" loop>
 <source src="assets/music.mp3" type="audio/mp3">
 </audio>
 
+<!-- VOICE -->
+
+<audio id="voiceMessage">
+<source src="assets/voice.mp3" type="audio/mp3">
+</audio>
+
 <script>
 
-const music = document.getElementById("bgMusic");
-const video = document.getElementById("greetingVideo");
+/* ELEMENTS */
+
+const music=document.getElementById("bgMusic");
+const voice=document.getElementById("voiceMessage");
+const video=document.getElementById("greetingVideo");
+
+/* PASSWORD HEARTS */
+
+for(let i=0;i<15;i++){
+
+const heart=document.createElement("img");
+
+heart.src="assets/heart.png";
+
+heart.classList.add("floating-heart");
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.animationDuration=
+(5+Math.random()*5)+"s";
+
+heart.style.width=
+(15+Math.random()*25)+"px";
+
+document.getElementById("passwordScreen")
+.appendChild(heart);
+
+}
 
 /* PASSWORD */
+
 function checkPassword(){
 
 if(document.getElementById("password").value==="052404"){
-document.getElementById("passwordScreen").style.display="none";
-document.getElementById("mainContent").style.display="block";
 
-/* autoplay music */
+document.getElementById("passwordScreen")
+.style.display="none";
+
+document.getElementById("giftScreen")
+.style.display="flex";
+
 music.play().catch(()=>{});
 
 }
+
 else{
-document.getElementById("error").innerText="A very special day❤️";
+
+document.getElementById("error")
+.innerText="Hint: A very special day ❤️";
+
+document.querySelector(".password-box")
+.classList.add("shake");
+
+setTimeout(()=>{
+document.querySelector(".password-box")
+.classList.remove("shake");
+},400);
+
 }
+
+}
+
+/* GIFT OPENING */
+
+let ribbonClicks=0;
+
+const ribbon=document.getElementById("ribbon");
+
+ribbon.addEventListener("click",()=>{
+
+ribbonClicks++;
+
+document.querySelector(".gift-container")
+.classList.add("shake");
+
+setTimeout(()=>{
+document.querySelector(".gift-container")
+.classList.remove("shake");
+},400);
+
+if(ribbonClicks>=3){
+
+ribbon.style.display="none";
+
+launchHearts();
+
+setTimeout(()=>{
+
+document.getElementById("giftScreen")
+.style.display="none";
+
+document.getElementById("mainContent")
+.style.display="block";
+
+createLoveNotes();
+
+},1200);
+
+}
+
+});
+
+/* HEART EXPLOSION */
+
+function launchHearts(){
+
+for(let i=0;i<25;i++){
+
+const heart=document.createElement("img");
+
+heart.src="assets/heart.png";
+
+heart.style.position="fixed";
+heart.style.width="30px";
+heart.style.left=Math.random()*100+"vw";
+heart.style.top="100vh";
+heart.style.zIndex="999999";
+heart.style.pointerEvents="none";
+
+heart.style.animation=
+`floatUp ${3+Math.random()*2}s linear forwards`;
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},5000);
+
+}
+
+}
+
+/* HEART FLOAT */
+
+const style=document.createElement("style");
+
+style.innerHTML=`
+
+@keyframes floatUp{
+0%{
+transform:translateY(0) scale(1);
+opacity:1;
+}
+100%{
+transform:translateY(-120vh) scale(1.8);
+opacity:0;
+}
+}
+
+`;
+
+document.head.appendChild(style);
+
+/* LOVE NOTES */
+
+function createLoveNotes(){
+
+const texts=[
+"i miss you ❤️",
+"my safe place ❤️",
+"forever us ❤️",
+"proud of you ❤️",
+"kiss me soon ❤️",
+"my favorite person ❤️"
+];
+
+setInterval(()=>{
+
+const note=document.createElement("div");
+
+note.classList.add("love-note");
+
+note.innerText=
+texts[Math.floor(Math.random()*texts.length)];
+
+note.style.left=Math.random()*100+"vw";
+
+note.style.animationDuration=
+(8+Math.random()*5)+"s";
+
+document.body.appendChild(note);
+
+setTimeout(()=>{
+note.remove();
+},12000);
+
+},1500);
+
+}
+
+/* PLAY VOICE */
+
+function playVoice(){
+
+voice.play();
 
 }
 
 /* OPEN POPUP */
+
 function openPopup(id){
+
 document.querySelectorAll(".section").forEach(s=>{
 s.classList.remove("active");
 });
-document.getElementById(id).classList.add("active");
+
+document.getElementById(id)
+.classList.add("active");
+
 }
 
-/* CLOSE BACKGROUND CLICK */
+/* CLOSE POPUP */
+
 document.addEventListener("click",function(e){
+
 if(e.target.classList.contains("section")){
+
 document.querySelectorAll(".section").forEach(s=>{
 s.classList.remove("active");
 });
+
 }
+
 });
 
-/* VIDEO → MUSIC CONTROL (FIXED) */
+/* VIDEO + MUSIC */
+
 if(video){
 
 video.addEventListener("play",()=>{
@@ -355,9 +816,13 @@ music.play().catch(()=>{});
 });
 
 video.addEventListener("pause",()=>{
+
 if(video.currentTime < video.duration){
+
 music.play().catch(()=>{});
+
 }
+
 });
 
 }
