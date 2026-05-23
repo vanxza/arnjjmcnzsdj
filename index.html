@@ -46,7 +46,7 @@ opacity:.8;
 100%{transform:translateY(120vh) rotate(360deg);opacity:0;}
 }
 
-/* PASSWORD SCREEN */
+/* PASSWORD */
 #passwordScreen{
 height:100vh;
 display:flex;
@@ -95,7 +95,7 @@ display:none;
 padding:20px;
 }
 
-/* ICON MENU */
+/* MENU (4 ICONS FIXED) */
 .menu{
 display:flex;
 justify-content:center;
@@ -109,9 +109,9 @@ background:rgba(255,255,255,0.2);
 padding:20px;
 border-radius:25px;
 cursor:pointer;
+width:120px;
 backdrop-filter:blur(10px);
 text-align:center;
-width:120px;
 }
 
 .card img{
@@ -127,7 +127,7 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.7);
+background:rgba(0,0,0,0.75);
 justify-content:center;
 align-items:center;
 z-index:9999;
@@ -143,7 +143,7 @@ display:flex;
 background:rgba(255,255,255,0.15);
 padding:25px;
 border-radius:20px;
-max-width:700px;
+max-width:750px;
 text-align:center;
 backdrop-filter:blur(10px);
 }
@@ -152,24 +152,27 @@ backdrop-filter:blur(10px);
 .gallery img{
 width:100%;
 max-width:300px;
-margin:10px;
 border-radius:15px;
 object-fit:cover;
+margin:10px;
 }
 
+/* VIDEO FIX */
 video{
-width:300px;
+width:320px;
+max-width:90%;
 border-radius:15px;
+background:black;
 }
 
-/* MUSIC BTN */
+/* MUSIC */
 .music-btn{
 position:fixed;
 top:15px;
 right:15px;
-border-radius:50%;
 width:50px;
 height:50px;
+border-radius:50%;
 }
 
 </style>
@@ -179,14 +182,13 @@ height:50px;
 
 <div class="petals"></div>
 
-<!-- PASSWORD -->
+<!-- PASSWORD SCREEN -->
 <section id="passwordScreen">
 <div class="password-box">
 
-<h2>💖 A surprise for you 💖</h2>
+<h2>💖 Surprise for you</h2>
 
 <input type="password" id="password" placeholder="Enter password">
-
 <button onclick="checkPassword()">Unlock</button>
 
 <p id="error"></p>
@@ -201,50 +203,46 @@ height:50px;
 
 <h1 style="text-align:center;">Happy Birthday ❤️</h1>
 
-<div class="menu">
+<!-- 4 ICON MENU -->
+<div class="menu" id="mainMenu">
 
-<div class="card" onclick="showSection('letter')">
+<div class="card" onclick="openPopup('letter')">
 <img src="assets/icon1.png">
 <p>Letter</p>
 </div>
 
-<div class="card" onclick="showSection('photo1')">
+<div class="card" onclick="openPopup('photo')">
 <img src="assets/icon2.png">
-<p>My Baby</p>
+<p>Photo</p>
 </div>
 
-<div class="card" onclick="showSection('memories')">
+<div class="card" onclick="openPopup('memories')">
 <img src="assets/icon3.png">
 <p>Memories</p>
 </div>
 
-<div class="card" onclick="showSection('video')">
+<div class="card" onclick="openPopup('video')">
 <img src="assets/icon4.png">
 <p>Video</p>
 </div>
 
 </div>
 
-<!-- LETTER POPUP -->
-<div id="letter" class="section active">
+<!-- LETTER -->
+<div id="letter" class="section">
 <div class="box">
-
 <h2>Happy Birthday, Hubby ❤️</h2>
-
 <p>
-Happy birthday, hubby ❤️ Another year older but still my favorite person ever. I know we’re far from each other rn, and I wish I could hug you and celebrate with you today. But even with the distance, I hope you can still feel how much I love and appreciate you. Thank you for being patient with us and for making me feel loved every single day. I’m always cheering for you from afar. Please take care of yourself and enjoy your day, okay? I miss you so much. 🥺❤️
+Happy birthday, hubby ❤️ Another year older but still my favorite person ever. I love you always 🥺❤️
 </p>
-
 </div>
 </div>
 
 <!-- PHOTO 1 -->
-<div id="photo1" class="section">
+<div id="photo" class="section">
 <div class="box">
-
 <img src="assets/photo1.jpg" style="width:100%;border-radius:15px;">
 <p>My handsome baby ❤️</p>
-
 </div>
 </div>
 
@@ -261,20 +259,20 @@ Happy birthday, hubby ❤️ Another year older but still my favorite person eve
 </div>
 
 <p>
-Every memory with you is my favorite ❤️<br>
-I love you more every single day ❤️<br>
-No distance can change how I feel for you ❤️
+Every moment with you is special ❤️<br>
+I love you endlessly ❤️<br>
+Distance can’t change us ❤️
 </p>
 
 </div>
 </div>
 
-<!-- VIDEO -->
+<!-- VIDEO FIXED -->
 <div id="video" class="section">
 <div class="box">
 
 <video id="vid" controls>
-<source src="assets/greeting-video.mp4">
+<source src="assets/greeting-video.mp4" type="video/mp4">
 </video>
 
 </div>
@@ -295,9 +293,7 @@ const video=document.getElementById("vid");
 /* PASSWORD */
 function checkPassword(){
 
-let pass=document.getElementById("password").value;
-
-if(pass==="052404"){
+if(document.getElementById("password").value==="052404"){
 document.getElementById("passwordScreen").style.display="none";
 document.getElementById("mainContent").style.display="block";
 music.play();
@@ -313,13 +309,20 @@ function toggleMusic(){
 music.paused ? music.play() : music.pause();
 }
 
-/* POPUP */
-function showSection(id){
+/* OPEN POPUP */
+function openPopup(id){
 document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
 document.getElementById(id).classList.add("active");
 }
 
-/* VIDEO CONTROL */
+/* CLICK BACKGROUND CLOSE */
+document.addEventListener("click",function(e){
+if(e.target.classList.contains("section")){
+document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+}
+});
+
+/* VIDEO FIX (MUST LOAD CORRECTLY) */
 video?.addEventListener("play",()=>music.pause());
 video?.addEventListener("ended",()=>music.play());
 
