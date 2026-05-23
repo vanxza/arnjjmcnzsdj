@@ -3,541 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Happy Birthday, Hubby!❤️</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<title>Happy Birthday</title>
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #8b1e2f, #f5e6d3);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-body{
-background:linear-gradient(to bottom,#ffdde8,#ffd1e3,#ffc2da);
-color:white;
-overflow-x:hidden;
+/* MAIN BOX */
+.container {
+    text-align: center;
 }
 
-/* PETALS */
-
-.petals{
-position:fixed;
-width:100%;
-height:100%;
-pointer-events:none;
-overflow:hidden;
-z-index:0;
+/* LANDSCAPE LETTER STYLE */
+.letter {
+    background: rgba(255, 245, 235, 0.95);
+    padding: 25px 40px;
+    border-radius: 20px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #8b1e2f;
+    letter-spacing: 2px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    margin-bottom: 40px;
 }
 
-.petal{
-position:absolute;
-top:-20px;
-font-size:18px;
-animation:fall linear infinite;
-opacity:.8;
+/* ICON ROW */
+.icons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
 }
 
-@keyframes fall{
-
-0%{
-transform:translateY(0) rotate(0deg);
-opacity:0;
+/* ICON STYLE */
+.icon {
+    width: 90px;
+    height: 90px;
+    background: rgba(255,255,255,0.8);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-20%{
-opacity:1;
+.icon:hover {
+    transform: scale(1.1);
 }
 
-100%{
-transform:translateY(120vh) rotate(360deg);
-opacity:0;
+/* ICON IMAGE */
+.icon img {
+    width: 60px;
+    height: 60px;
 }
-
-}
-
-/* GLOW */
-
-.glow{
-text-shadow:
-0 0 10px #ff4d6d,
-0 0 20px #ff4d6d,
-0 0 40px #ff4d6d;
-}
-
-/* PASSWORD SCREEN */
-
-#passwordScreen{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-text-align:center;
-background:
-linear-gradient(rgba(255,182,193,.35),rgba(255,105,180,.35)),
-url('https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=1974&auto=format&fit=crop');
-background-size:cover;
-background-position:center;
-padding:20px;
-}
-
-.password-box{
-background:rgba(255,255,255,0.18);
-padding:35px;
-border-radius:30px;
-backdrop-filter:blur(12px);
-box-shadow:0 0 25px rgba(255,77,109,.4);
-width:320px;
-}
-
-input{
-width:100%;
-padding:14px;
-border:none;
-border-radius:14px;
-margin-top:15px;
-text-align:center;
-font-size:16px;
-outline:none;
-}
-
-button{
-padding:12px 25px;
-margin-top:15px;
-border:none;
-border-radius:25px;
-background:#ff4d6d;
-color:white;
-font-size:16px;
-cursor:pointer;
-box-shadow:0 0 15px #ff4d6d;
-transition:.3s;
-}
-
-button:hover{
-transform:scale(1.05);
-}
-
-/* MAIN */
-
-#mainContent{
-display:none;
-position:relative;
-z-index:2;
-min-height:100vh;
-padding-bottom:100px;
-}
-
-/* HERO */
-
-.hero{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
-background:
-linear-gradient(rgba(255,192,203,.35),rgba(255,182,193,.45)),
-url('https://images.unsplash.com/photo-1518623489648-a173ef7824f3?q=80&w=1974&auto=format&fit=crop');
-background-size:cover;
-background-position:center;
-}
-
-.hero h1{
-font-size:52px;
-margin-bottom:15px;
-}
-
-.hero p{
-max-width:700px;
-line-height:2;
-font-size:18px;
-}
-
-/* MENU */
-
-.menu{
-display:flex;
-justify-content:center;
-gap:40px;
-flex-wrap:wrap;
-margin-top:50px;
-}
-
-/* CARDS */
-
-.card{
-background:rgba(255,255,255,0.2);
-padding:30px;
-width:220px;
-border-radius:30px;
-cursor:pointer;
-transition:.4s;
-backdrop-filter:blur(12px);
-box-shadow:0 8px 25px rgba(255,105,180,.35);
-border:2px solid rgba(255,255,255,.25);
-}
-
-.card:hover{
-transform:translateY(-10px) scale(1.05);
-}
-
-.icon{
-font-size:80px;
-margin-bottom:15px;
-filter:drop-shadow(0 0 10px rgba(255,255,255,.6));
-}
-
-/* SECTION */
-
-.section{
-display:none;
-padding:100px 20px;
-text-align:center;
-}
-
-/* LETTER */
-
-.letter-box{
-max-width:700px;
-margin:auto;
-background:rgba(255,255,255,0.18);
-padding:35px;
-border-radius:30px;
-line-height:2;
-font-size:18px;
-backdrop-filter:blur(12px);
-box-shadow:0 0 20px rgba(255,77,109,.3);
-}
-
-/* GALLERY */
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:20px;
-margin-top:40px;
-width:100%;
-max-width:1200px;
-margin-inline:auto;
-align-items:start;
-justify-items:center;
-padding:10px;
-}
-
-.gallery img{
-width:100%;
-max-width:320px;
-height:auto;
-display:block;
-object-fit:contain;
-border-radius:20px;
-box-shadow:0 0 20px rgba(255,77,109,.5);
-background:#fff;
-padding:5px;
-}
-
-/* VIDEO */
-
-video{
-width:320px;
-max-width:90%;
-margin-top:30px;
-border-radius:25px;
-box-shadow:0 0 25px rgba(255,77,109,.6);
-}
-
-/* MUSIC BUTTON */
-
-.music-btn{
-position:fixed;
-top:20px;
-right:20px;
-width:55px;
-height:55px;
-border-radius:50%;
-font-size:22px;
-z-index:999;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-.hero h1{
-font-size:35px;
-}
-
-.hero p{
-font-size:16px;
-}
-
-.card{
-width:170px;
-padding:25px;
-}
-
-.icon{
-font-size:60px;
-}
-
-.letter-box{
-font-size:16px;
-padding:25px;
-}
-
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- PETALS -->
+<div class="container">
 
-<div class="petals"></div>
+    <!-- LANDSCAPE LETTER -->
+    <div class="letter">
+        HAPPY BIRTHDAY
+    </div>
 
-<!-- PASSWORD SCREEN -->
+    <!-- ICONS -->
+    <div class="icons">
 
-<section id="passwordScreen">
+        <!-- ICON 1 -->
+        <div class="icon" onclick="openFlower()">
+            <img src="assets/icon1.png" alt="icon">
+        </div>
 
-<div class="password-box">
+        <!-- ICON 2 -->
+        <div class="icon" onclick="openLetter()">
+            <img src="assets/icon2.png" alt="icon">
+        </div>
 
-<h1 class="glow">A surprise made with love ❤️</h1>
+        <!-- ICON 3 -->
+        <div class="icon" onclick="openVideo()">
+            <img src="assets/icon3.png" alt="icon">
+        </div>
 
-<input type="password" id="password" placeholder="Enter password">
-
-<button onclick="checkPassword()">Unlock Surprise</button>
-
-<p id="error" style="margin-top:15px;"></p>
-
-</div>
-
-</section>
-
-<!-- MAIN -->
-
-<div id="mainContent">
-
-<button class="music-btn" onclick="toggleMusic()">🎵</button>
-
-<!-- HERO -->
-
-<section class="hero">
-
-<h1 class="glow">Happy Birthday, Hubby ❤️</h1>
-
-<p>
-I made this little world just for you.
-No matter how far we are,
-you will always be my favorite person ❤️
-</p>
-
-<div class="menu">
-
-<!-- LETTER -->
-
-<div class="card" onclick="showSection('letterSection')">
-<div class="icon">📮</div>
-<h2>Love Letter</h2>
-</div>
-
-<!-- FLOWERS -->
-
-<div class="card" onclick="showSection('flowerSection')">
-<div class="icon">💐</div>
-<h2>Flowers</h2>
-</div>
-
-<!-- VIDEO -->
-
-<div class="card" onclick="showSection('videoSection')">
-<div class="icon">📹</div>
-<h2>Video</h2>
-</div>
+    </div>
 
 </div>
-
-</section>
-
-<!-- LETTER SECTION -->
-
-<section id="letterSection" class="section">
-
-<h1 class="glow">For You ❤️</h1>
-
-<div class="letter-box">
-
-Happy birthday, love ❤️
-<br><br>
-
-Even though we’re far from each other right now,
-you still make my days feel complete.
-<br><br>
-
-Thank you for loving me,
-understanding me,
-and staying beside me no matter the distance.
-<br><br>
-
-I can’t wait for the day
-I finally get to celebrate your birthday beside you.
-<br><br>
-
-I love you always ❤️
-
-</div>
-
-</section>
-
-<!-- FLOWER SECTION -->
-
-<section id="flowerSection" class="section">
-
-<h1 class="glow">Our Memories 🌸</h1>
-
-<p style="margin-top:15px;font-size:18px;">
-Happy birthday, my handsome baby ❤️<br>
-I hope this day reminds you how loved you are.
-</p>
-
-<div class="gallery">
-
-<img src="assets/photo1.jpg">
-<img src="assets/photo2.jpg">
-<img src="assets/photo3.jpg">
-<img src="assets/photo4.jpg">
-<img src="assets/photo5.jpg">
-<img src="assets/photo6.jpg">
-
-</div>
-
-</section>
-
-<!-- VIDEO SECTION -->
-
-<section id="videoSection" class="section">
-
-<h1 class="glow">A Message Just For You ❤️</h1>
-
-<video id="greetingVideo" controls>
-<source src="assets/greeting-video.mp4" type="video/mp4">
-</video>
-
-</section>
-
-</div>
-
-<!-- MUSIC -->
-
-<audio id="bgMusic" loop>
-<source src="assets/music.mp3" type="audio/mp3">
-</audio>
 
 <script>
-
-const music=document.getElementById("bgMusic");
-const video=document.getElementById("greetingVideo");
-
-/* PASSWORD */
-
-function checkPassword(){
-
-const pass=document.getElementById("password").value;
-
-if(pass==="052404"){
-
-document.getElementById("passwordScreen").style.display="none";
-document.getElementById("mainContent").style.display="block";
-
-music.play().catch(()=>{});
-
-}else{
-
-document.getElementById("error").innerText="Hint: A very special date ❤️";
-
+function openFlower(){
+    window.location.href = "flower.html";
 }
 
+function openLetter(){
+    window.location.href = "letter.html";
 }
 
-/* MUSIC BUTTON */
-
-function toggleMusic(){
-
-if(music.paused){
-music.play();
-}else{
-music.pause();
+function openVideo(){
+    window.location.href = "video.html";
 }
-
-}
-
-/* VIDEO */
-
-video.addEventListener("play",()=>{
-music.pause();
-});
-
-video.addEventListener("pause",()=>{
-music.play();
-});
-
-video.addEventListener("ended",()=>{
-music.play();
-});
-
-/* SHOW SECTION */
-
-function showSection(id){
-
-const sections=document.querySelectorAll(".section");
-
-sections.forEach(section=>{
-section.style.display="none";
-});
-
-const selected=document.getElementById(id);
-
-selected.style.display="block";
-
-window.scrollTo({
-top:selected.offsetTop,
-behavior:"smooth"
-});
-
-}
-
-/* PETALS */
-
-function createPetal(){
-
-const p=document.createElement("div");
-
-p.classList.add("petal");
-
-p.innerHTML="🌸";
-
-p.style.left=Math.random()*100+"vw";
-
-p.style.animationDuration=(Math.random()*5+5)+"s";
-
-document.querySelector(".petals").appendChild(p);
-
-setTimeout(()=>{
-p.remove();
-},10000);
-
-}
-
-setInterval(createPetal,200);
-
 </script>
 
 </body>
