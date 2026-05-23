@@ -22,7 +22,6 @@ background:black;
 }
 
 /* BACKGROUND */
-
 #passwordScreen,
 #giftScreen,
 #mainContent{
@@ -35,7 +34,6 @@ background-position:center;
 }
 
 /* PASSWORD */
-
 #passwordScreen{
 display:flex;
 justify-content:center;
@@ -82,12 +80,7 @@ button:hover{
 transform:scale(1.05);
 }
 
-#error{
-margin-top:10px;
-}
-
 /* FLOATING HEARTS */
-
 .floating-heart{
 position:absolute;
 background:transparent;
@@ -102,21 +95,12 @@ mix-blend-mode:screen;
 }
 
 @keyframes floatHeart{
-0%{
-transform:translateY(100vh);
-opacity:0;
-}
-30%{
-opacity:1;
-}
-100%{
-transform:translateY(-120vh);
-opacity:0;
-}
+0%{transform:translateY(100vh);opacity:0;}
+30%{opacity:1;}
+100%{transform:translateY(-120vh);opacity:0;}
 }
 
 /* FLOATING BUBBLES */
-
 .bubble{
 position:fixed;
 bottom:-100px;
@@ -129,21 +113,12 @@ z-index:999;
 }
 
 @keyframes bubbleFloat{
-0%{
-transform:translateY(0) scale(1);
-opacity:0;
-}
-20%{
-opacity:1;
-}
-100%{
-transform:translateY(-120vh) scale(1.6);
-opacity:0;
-}
+0%{transform:translateY(0) scale(1);opacity:0;}
+20%{opacity:1;}
+100%{transform:translateY(-120vh) scale(1.6);opacity:0;}
 }
 
 /* GIFT */
-
 #giftScreen{
 display:none;
 justify-content:center;
@@ -169,14 +144,9 @@ cursor:pointer;
 transition:.3s;
 }
 
-#giftBox:hover{
-transform:scale(1.03);
-}
-
 .giftText{
 margin-top:20px;
 font-size:22px;
-text-shadow:0 0 10px rgba(0,0,0,.5);
 }
 
 @keyframes floatGift{
@@ -186,7 +156,6 @@ text-shadow:0 0 10px rgba(0,0,0,.5);
 }
 
 /* SHAKE */
-
 .shake{
 animation:shake .4s;
 }
@@ -200,7 +169,6 @@ animation:shake .4s;
 }
 
 /* MAIN */
-
 #mainContent{
 display:none;
 padding:20px;
@@ -208,31 +176,20 @@ overflow-y:auto;
 }
 
 /* TITLE */
-
 .main-title{
 text-align:center;
 margin-top:15px;
 font-size:38px;
 text-shadow:0 0 15px rgba(255,255,255,.6);
-animation:fadeIn 2s ease;
-}
-
-.subtitle{
-text-align:center;
-margin-top:10px;
-font-size:18px;
-opacity:.9;
 }
 
 /* MENU */
-
 .menu{
 display:flex;
 justify-content:center;
 gap:20px;
 flex-wrap:wrap;
 margin-top:40px;
-animation:fadeIn 2s ease;
 }
 
 .card{
@@ -241,14 +198,7 @@ padding:18px;
 border-radius:20px;
 width:110px;
 cursor:pointer;
-backdrop-filter:blur(10px);
 text-align:center;
-transition:.3s;
-box-shadow:0 0 15px rgba(255,255,255,.1);
-}
-
-.card:hover{
-transform:translateY(-8px) scale(1.05);
 }
 
 .card img{
@@ -256,32 +206,7 @@ width:55px;
 height:55px;
 }
 
-/* LOVE NOTES */
-
-.love-note{
-position:fixed;
-font-size:14px;
-opacity:.5;
-pointer-events:none;
-animation:floatText 10s linear infinite;
-}
-
-@keyframes floatText{
-0%{
-transform:translateY(100vh);
-opacity:0;
-}
-20%{
-opacity:.7;
-}
-100%{
-transform:translateY(-120vh);
-opacity:0;
-}
-}
-
 /* POPUPS */
-
 .section{
 display:none;
 position:fixed;
@@ -294,146 +219,25 @@ justify-content:center;
 align-items:center;
 padding:20px;
 z-index:9999;
-cursor:pointer;
-overflow-y:auto;
 }
 
 .section.active{
 display:flex;
-animation:fadeIn .5s ease;
 }
 
+/* BOX */
 .box{
 background:rgba(255,255,255,0.15);
 padding:25px;
 border-radius:20px;
 max-width:800px;
 text-align:center;
-backdrop-filter:blur(10px);
-cursor:default;
-box-shadow:0 0 20px rgba(255,255,255,.1);
 }
 
-.box p{
-line-height:1.8;
-}
-
-/* GALLERY */
-
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
-gap:10px;
-margin-bottom:20px;
-}
-
-/* IMAGES */
-
-img{
-max-width:100%;
-height:auto;
-object-fit:contain;
-border-radius:15px;
-}
-
-/* VIDEO */
-
-video{
-width:320px;
-max-width:90%;
-border-radius:15px;
-background:black;
-}
-
-/* COUNTER */
-
+/* LOVE COUNTER */
 #loveCounter{
+font-size:22px;
 margin-bottom:20px;
-font-size:24px;
-line-height:1.8;
-text-shadow:0 0 12px rgba(255,255,255,.6);
-}
-
-/* BUTTON */
-
-.voice-btn{
-margin-top:18px;
-background:#ff758f;
-}
-
-/* TYPING */
-
-.typing{
-border-right:2px solid white;
-white-space:nowrap;
-overflow:hidden;
-display:inline-block;
-animation:blink .7s infinite;
-}
-
-@keyframes blink{
-50%{
-border-color:transparent;
-}
-}
-
-@keyframes fadeIn{
-from{
-opacity:0;
-transform:translateY(20px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-/* MOBILE */
-
-@media (max-width:430px){
-
-.password-box{
-width:90%;
-padding:20px;
-}
-
-.main-title{
-font-size:28px;
-}
-
-.card{
-width:80px;
-padding:12px;
-}
-
-.card img{
-width:45px;
-height:45px;
-}
-
-.box{
-width:95%;
-padding:18px;
-}
-
-video{
-width:100%;
-max-width:100%;
-}
-
-p{
-font-size:14px;
-line-height:1.6;
-}
-
-.giftText{
-font-size:18px;
-}
-
-#loveCounter{
-font-size:18px;
-}
-
 }
 
 </style>
@@ -442,70 +246,43 @@ font-size:18px;
 <body>
 
 <!-- PASSWORD -->
-
 <section id="passwordScreen">
-
 <div class="password-box">
-
 <h3>Enter Password ❤️</h3>
-
 <input type="password" id="password">
-
 <button onclick="checkPassword()">Unlock</button>
-
 <p id="error"></p>
-
 </div>
-
 </section>
 
 <!-- GIFT -->
-
 <section id="giftScreen">
-
 <div class="gift-container">
-
 <img src="assets/giftbox.png" id="giftBox">
-
-<p class="giftText">
-Tap the gift 3 times to open your surprise ❤️
-</p>
-
+<p class="giftText">Tap the gift 3 times ❤️</p>
 </div>
-
 </section>
 
 <!-- MAIN -->
-
 <div id="mainContent">
 
 <h1 class="main-title">Happy Birthday, Hubby!❤️</h1>
 
-<p class="subtitle">
-Different places, same love 🌎❤️
-</p>
+<p class="subtitle">Different places, same love 🌎❤️</p>
 
 <div class="menu">
-
-<!-- ICON 1 LETTER -->
 
 <div class="card" onclick="openPopup('letter')">
 <img src="assets/icon1.png">
 </div>
 
-<!-- ICON 2 VIDEO -->
-
 <div class="card" onclick="openPopup('video')">
 <img src="assets/icon2.png">
 </div>
 
-<!-- ICON 3 MEMORIES -->
-
 <div class="card" onclick="openPopup('memories')">
 <img src="assets/icon3.png">
 </div>
-
-<!-- ICON 4 PHOTO + VOICE -->
 
 <div class="card" onclick="openPopup('photo1')">
 <img src="assets/icon4.png">
@@ -514,420 +291,123 @@ Different places, same love 🌎❤️
 </div>
 
 <!-- LETTER -->
-
 <div id="letter" class="section">
 <div class="box">
-
-<h2 class="typing">Happy Birthday, Loveyy ❤️</h2>
-
-<br><br>
-
-<p>
-Happy birthday, loveyy ❤️ Another year older but still my favorite person ever.
-I know we’re far from each other rn, and I wish I could hug you and celebrate with you today.
-But even with the distance, I hope you can still feel how much I love and appreciate you.
-Thank you for being patient with us and for making me feel loved every single day.
-I’m always cheering for you from afar. Please take care of yourself and enjoy your day, okay?
-I miss you so much 🥺❤️
-</p>
-
+<h2>Happy Birthday ❤️</h2>
+<p>Your message here...</p>
 </div>
 </div>
 
 <!-- VIDEO -->
-
 <div id="video" class="section">
 <div class="box">
-
-<video id="greetingVideo" controls playsinline preload="auto">
-<source src="assets/greeting-video.mp4" type="video/mp4">
+<video id="greetingVideo" controls>
+<source src="assets/greeting-video.mp4">
 </video>
-
 </div>
 </div>
 
 <!-- MEMORIES -->
-
 <div id="memories" class="section">
 <div class="box">
-
-<div class="gallery">
-
-<img src="assets/photo2.jpg">
-<img src="assets/photo3.jpg">
-<img src="assets/photo4.jpg">
-<img src="assets/photo5.jpg">
-<img src="assets/photo6.jpg">
-
-</div>
-
-<h2 id="loveCounter">
-❤️ Loading our love story...
-</h2>
-
-<p>
-You are the reason I smile so easily ❤️<br>
-Everything feels better because of you ❤️<br>
-I’ll never stop choosing you ❤️<br><br>
-
-I hope you’re doing okay today.
-I’m always proud of you and I’ll always stay by your side no matter how far we are from each other.
-Thank you for making me feel safe, loved, and happy every single day ❤️
-</p>
-
+<h2 id="loveCounter">Loading...</h2>
 </div>
 </div>
 
-<!-- PHOTO + VOICE -->
-
+<!-- PHOTO -->
 <div id="photo1" class="section">
 <div class="box">
-
-<img src="assets/photo1.jpg" style="max-width:350px;">
-
-<p style="margin-top:15px;">
-My handsome baby ❤️
-</p>
-
-<p>
-You are my peace, my love, and my forever person ❤️
-</p>
-
-<button class="voice-btn" onclick="playVoice()">
-Play My Voice ❤️
-</button>
-
+<img src="assets/photo1.jpg" style="max-width:300px;">
+<button onclick="playVoice()" class="voice-btn">Play My Voice ❤️</button>
 </div>
 </div>
 
 </div>
 
-<!-- MUSIC -->
-
+<!-- AUDIO -->
 <audio id="bgMusic" loop>
-<source src="assets/music.mp3" type="audio/mp3">
+<source src="assets/music.mp3">
 </audio>
 
-<!-- VOICE -->
-
 <audio id="voiceMessage">
-<source src="assets/voice.mp3" type="audio/mp3">
+<source src="assets/voice.mp3">
 </audio>
 
 <script>
 
 /* ELEMENTS */
-
 const music=document.getElementById("bgMusic");
 const voice=document.getElementById("voiceMessage");
 const video=document.getElementById("greetingVideo");
 
-/* FLOATING HEARTS */
-
+/* HEARTS */
 for(let i=0;i<15;i++){
-
 const heart=document.createElement("img");
-
 heart.src="assets/heart.png";
-
 heart.classList.add("floating-heart");
-
 heart.style.left=Math.random()*100+"vw";
-
-heart.style.animationDuration=
-(5+Math.random()*5)+"s";
-
-heart.style.width=
-(15+Math.random()*25)+"px";
-
-document.getElementById("passwordScreen")
-.appendChild(heart);
-
+heart.style.animationDuration=(5+Math.random()*5)+"s";
+document.getElementById("passwordScreen").appendChild(heart);
 }
 
 /* PASSWORD */
-
 function checkPassword(){
-
-if(document.getElementById("password").value==="052404"){
-
-document.getElementById("passwordScreen")
-.style.display="none";
-
-document.getElementById("giftScreen")
-.style.display="flex";
-
+if(password.value==="052404"){
+passwordScreen.style.display="none";
+giftScreen.style.display="flex";
 music.play().catch(()=>{});
-
+}else{
+error.innerText="Hint: A very special day ❤️";
+}
 }
 
-else{
-
-document.getElementById("error")
-.innerText="Hint: A very special day ❤️";
-
-document.querySelector(".password-box")
-.classList.add("shake");
-
-setTimeout(()=>{
-document.querySelector(".password-box")
-.classList.remove("shake");
-},400);
-
-}
-
-}
-
-/* GIFT TAP */
-
-let giftClicks=0;
-
-const giftBox=document.getElementById("giftBox");
-
+/* GIFT */
+let clicks=0;
 giftBox.addEventListener("click",()=>{
-
-giftClicks++;
-
-document.querySelector(".gift-container")
-.classList.add("shake");
-
-setTimeout(()=>{
-document.querySelector(".gift-container")
-.classList.remove("shake");
-},400);
-
-if(giftClicks>=3){
-
-launchHearts();
-
-setTimeout(()=>{
-
-document.getElementById("giftScreen")
-.style.display="none";
-
-document.getElementById("mainContent")
-.style.display="block";
-
-createLoveNotes();
-
-},1200);
-
+clicks++;
+if(clicks>=3){
+giftScreen.style.display="none";
+mainContent.style.display="block";
+startEffects();
 }
-
 });
 
-/* HEART EXPLOSION */
-
-function launchHearts(){
-
-for(let i=0;i<25;i++){
-
-const heart=document.createElement("img");
-
-heart.src="assets/heart.png";
-
-heart.style.position="fixed";
-heart.style.width="30px";
-heart.style.left=Math.random()*100+"vw";
-heart.style.top="100vh";
-heart.style.zIndex="999999";
-heart.style.pointerEvents="none";
-
-heart.style.animation=
-`floatUp ${3+Math.random()*2}s linear forwards`;
-
-document.body.appendChild(heart);
-
-setTimeout(()=>{
-heart.remove();
-},5000);
-
-}
-
-}
-
-const style=document.createElement("style");
-
-style.innerHTML=`
-
-@keyframes floatUp{
-0%{
-transform:translateY(0) scale(1);
-opacity:1;
-}
-100%{
-transform:translateY(-120vh) scale(1.8);
-opacity:0;
-}
-}
-
-`;
-
-document.head.appendChild(style);
-
-/* LOVE NOTES */
-
-function createLoveNotes(){
-
-const texts=[
-"i miss you ❤️",
-"my safe place ❤️",
-"forever us ❤️",
-"proud of you ❤️",
-"kiss me soon ❤️",
-"my baby aruneee ❤️",
-"my favorite person ❤️"
-];
-
+/* BUBBLES */
+function startEffects(){
 setInterval(()=>{
-
-const note=document.createElement("div");
-
-note.classList.add("love-note");
-
-note.innerText=
-texts[Math.floor(Math.random()*texts.length)];
-
-note.style.left=Math.random()*100+"vw";
-
-note.style.animationDuration=
-(8+Math.random()*5)+"s";
-
-document.body.appendChild(note);
-
-setTimeout(()=>{
-note.remove();
-},12000);
-
-},1500);
-
+const bubble=document.createElement("div");
+bubble.className="bubble";
+bubble.style.width=(10+Math.random()*40)+"px";
+bubble.style.height=bubble.style.width;
+bubble.style.left=Math.random()*100+"vw";
+bubble.style.animationDuration=(6+Math.random()*5)+"s";
+document.body.appendChild(bubble);
+setTimeout(()=>bubble.remove(),12000);
+},800);
 }
 
 /* VOICE */
-
 function playVoice(){
-
-voice.play();
-
+music.pause();
+voice.currentTime=0;
+voice.play().then(()=>{
+voice.onended=()=>music.play();
+});
 }
 
-/* LOVE COUNTER */
-/* SEPTEMBER 25 2026 */
-
-const startDate = new Date("September 26, 2025 10:05:00");
-
-function updateLoveCounter(){
-
-const now = new Date();
-
-const diff = Math.abs(now - startDate);
-
-const days = Math.floor(diff / (1000*60*60*24));
-
-const hours = Math.floor(
-(diff / (1000*60*60)) % 24
-);
-
-const minutes = Math.floor(
-(diff / (1000*60)) % 60
-);
-
-const seconds = Math.floor(
-(diff / 1000) % 60
-);
-
-document.getElementById("loveCounter").innerHTML = `
-❤️ We've been together for ❤️ <br>
-${days} days ${hours} hours ${minutes} minutes ${seconds} seconds
-`;
-
-}
-
-setInterval(updateLoveCounter,1000);
-
-updateLoveCounter();
-
-/* FLOATING BUBBLES */
-
-function createBubbles(){
+/* COUNTER */
+const startDate=new Date("September 26, 2025 10:05:00");
 
 setInterval(()=>{
+const d=new Date()-startDate;
+loveCounter.innerHTML=
+Math.floor(d/86400000)+" days ❤️";
+},1000);
 
-const bubble=document.createElement("div");
-
-bubble.classList.add("bubble");
-
-const size=15+Math.random()*40;
-
-bubble.style.width=size+"px";
-bubble.style.height=size+"px";
-
-bubble.style.left=Math.random()*100+"vw";
-
-bubble.style.animationDuration=
-(6+Math.random()*5)+"s";
-
-document.body.appendChild(bubble);
-
-setTimeout(()=>{
-bubble.remove();
-},12000);
-
-},800);
-
-}
-
-createBubbles();
-
-/* OPEN POPUP */
-
+/* POPUPS */
 function openPopup(id){
-
-document.querySelectorAll(".section").forEach(s=>{
-s.classList.remove("active");
-});
-
-document.getElementById(id)
-.classList.add("active");
-
-}
-
-/* CLOSE POPUP */
-
-document.addEventListener("click",function(e){
-
-if(e.target.classList.contains("section")){
-
-document.querySelectorAll(".section").forEach(s=>{
-s.classList.remove("active");
-});
-
-}
-
-});
-
-/* VIDEO + MUSIC */
-
-if(video){
-
-video.addEventListener("play",()=>{
-music.pause();
-});
-
-video.addEventListener("ended",()=>{
-music.play().catch(()=>{});
-});
-
-video.addEventListener("pause",()=>{
-
-if(video.currentTime < video.duration){
-
-music.play().catch(()=>{});
-
-}
-
-});
-
+document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+document.getElementById(id).classList.add("active");
 }
 
 </script>
