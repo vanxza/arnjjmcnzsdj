@@ -141,6 +141,15 @@ max-width:100%;
 border-radius:15px;
 }
 
+/* ✅ FIX ICON 4 PHOTO NOT ZOOMED */
+#photo1 img{
+width:100%;
+max-width:350px;
+height:auto;
+object-fit:contain;
+border-radius:15px;
+}
+
 /* VIDEO */
 video{
 width:320px;
@@ -187,7 +196,7 @@ background:black;
 <img src="assets/icon3.png">
 </div>
 
-<!-- ICON 4 PHOTO 1 -->
+<!-- ICON 4 PHOTO1 -->
 <div class="card" onclick="openPopup('photo1')">
 <img src="assets/icon4.png">
 </div>
@@ -199,12 +208,12 @@ background:black;
 <div class="box">
 
 <p>
-Happy birthday, love ❤️ Another year older but still my favorite person
-ever hahaha. I know we’re far from each other rn, and I wish I could hug you
-and celebrate with you today. But even with the distance, I hope you can still
-feel how much I love and appreciate you. Thank you for being patient with us 
-and for making me feel loved every single day. I’m always cheering for you from
-afar. Please take care of yourself and enjoy your day, okay? I miss you so much. 🥺❤️
+Happy birthday, loveyy ❤️ Another year older but still my favorite person ever.
+I know we’re far from each other rn, and I wish I could hug you and celebrate with
+you today. But even with the distance, I hope you can still feel how much I love 
+and appreciate you. Thank you for being patient with us and for making me feel loved 
+every single day. I’m always cheering for you from afar. Please take care of yourself
+and enjoy your day, okay? I miss you so much. 🥺❤️
 </p>
 
 </div>
@@ -213,7 +222,7 @@ afar. Please take care of yourself and enjoy your day, okay? I miss you so much.
 <!-- VIDEO -->
 <div id="video" class="section">
 <div class="box">
-<video controls>
+<video id="greetingVideo" controls>
 <source src="assets/greeting-video.mp4" type="video/mp4">
 </video>
 </div>
@@ -232,33 +241,54 @@ afar. Please take care of yourself and enjoy your day, okay? I miss you so much.
 </div>
 
 <p>
-You are deeply loved ❤️<br>
-You are my happiness always ❤️<br>
-No distance can change us ❤️
+You are the reason I smile so easily ❤️<br>
+Everything feels better because of you ❤️<br>
+I’ll never stop choosing you ❤️
+
+I hope you’re doing okay today. I just wanted to remind you that
+you’re doing better than you think, and I’m so proud of you in ways 
+I don’t always say. You make my days brighter just by being in my life, 
+even from a distance. I hope today gives you a reason to smile, even a 
+small one, because you truly deserve it. I really love you Arunee ♡
 </p>
 
 </div>
 </div>
 
-<!-- PHOTO 1 -->
+<!-- PHOTO 1 (ICON 4 FIXED) -->
 <div id="photo1" class="section">
 <div class="box">
 <img src="assets/photo1.jpg">
+
 <p>My handsome baby ❤️</p>
-<p>You are loved more than you know loveyyy ❤️</p>
+<p>You are my peace, my love, and my forever person ❤️</p>
+
 </div>
 </div>
 
 </div>
+
+<!-- 🎵 MUSIC -->
+<audio id="bgMusic" loop>
+<source src="assets/music.mp3" type="audio/mp3">
+</audio>
 
 <script>
 
-/* PASSWORD */
+/* MUSIC + VIDEO */
+const music = document.getElementById("bgMusic");
+const video = document.getElementById("greetingVideo");
+
+/* PASSWORD + AUTO MUSIC */
 function checkPassword(){
 
 if(document.getElementById("password").value==="052404"){
 document.getElementById("passwordScreen").style.display="none";
 document.getElementById("mainContent").style.display="block";
+
+/* autoplay music */
+music.play().catch(()=>{});
+
 }
 else{
 document.getElementById("error").innerText="A very special day❤️";
@@ -274,7 +304,7 @@ s.classList.remove("active");
 document.getElementById(id).classList.add("active");
 }
 
-/* CLOSE WHEN CLICK BACKGROUND */
+/* CLOSE ON BACKGROUND CLICK */
 document.addEventListener("click",function(e){
 if(e.target.classList.contains("section")){
 document.querySelectorAll(".section").forEach(s=>{
@@ -282,6 +312,19 @@ s.classList.remove("active");
 });
 }
 });
+
+/* 🎥 VIDEO CONTROLS MUSIC */
+if(video){
+
+video.addEventListener("play",()=>{
+music.pause();
+});
+
+video.addEventListener("ended",()=>{
+music.play();
+});
+
+}
 
 </script>
 
