@@ -3,28 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday</title>
+<title>Secret Birthday Site</title>
 
 <style>
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: linear-gradient(135deg, #8b1e2f, #f5e6d3);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-/* MAIN BOX */
-.container {
+/* LOGIN SCREEN */
+#login {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
-/* LANDSCAPE LETTER STYLE */
+#login h2 {
+    color: white;
+    margin-bottom: 15px;
+}
+
+#login input {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+#login button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #f5e6d3;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* MAIN SITE */
+#site {
+    display: none;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* TITLE */
 .letter {
     background: rgba(255, 245, 235, 0.95);
-    padding: 25px 40px;
+    padding: 25px 50px;
     border-radius: 20px;
     font-size: 32px;
     font-weight: bold;
@@ -34,14 +67,12 @@ body {
     margin-bottom: 40px;
 }
 
-/* ICON ROW */
+/* ICONS */
 .icons {
     display: flex;
-    justify-content: center;
     gap: 30px;
 }
 
-/* ICON STYLE */
 .icon {
     width: 90px;
     height: 90px;
@@ -59,7 +90,6 @@ body {
     transform: scale(1.1);
 }
 
-/* ICON IMAGE */
 .icon img {
     width: 60px;
     height: 60px;
@@ -69,29 +99,32 @@ body {
 
 <body>
 
-<div class="container">
+<!-- LOGIN -->
+<div id="login">
+    <h2>Enter Password</h2>
+    <input type="password" id="pass" placeholder="Password">
+    <button onclick="checkPass()">Enter</button>
+</div>
 
-    <!-- LANDSCAPE LETTER -->
+<!-- MAIN SITE -->
+<div id="site">
+
     <div class="letter">
         HAPPY BIRTHDAY
     </div>
 
-    <!-- ICONS -->
     <div class="icons">
 
-        <!-- ICON 1 -->
-        <div class="icon" onclick="openFlower()">
-            <img src="assets/icon1.png" alt="icon">
+        <div class="icon" onclick="goFlower()">
+            <img src="assets/icon1.png">
         </div>
 
-        <!-- ICON 2 -->
-        <div class="icon" onclick="openLetter()">
-            <img src="assets/icon2.png" alt="icon">
+        <div class="icon" onclick="goLetter()">
+            <img src="assets/icon2.png">
         </div>
 
-        <!-- ICON 3 -->
-        <div class="icon" onclick="openVideo()">
-            <img src="assets/icon3.png" alt="icon">
+        <div class="icon" onclick="goVideo()">
+            <img src="assets/icon3.png">
         </div>
 
     </div>
@@ -99,15 +132,26 @@ body {
 </div>
 
 <script>
-function openFlower(){
+function checkPass(){
+    let pass = document.getElementById("pass").value;
+
+    if(pass === "iloveyou"){
+        document.getElementById("login").style.display = "none";
+        document.getElementById("site").style.display = "flex";
+    } else {
+        alert("Wrong password!");
+    }
+}
+
+function goFlower(){
     window.location.href = "flower.html";
 }
 
-function openLetter(){
+function goLetter(){
     window.location.href = "letter.html";
 }
 
-function openVideo(){
+function goVideo(){
     window.location.href = "video.html";
 }
 </script>
