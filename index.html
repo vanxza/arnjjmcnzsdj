@@ -136,12 +136,15 @@ grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
 gap:10px;
 }
 
+/* IMAGES NEVER CUT */
 img{
 max-width:100%;
+height:auto;
+object-fit:contain;
 border-radius:15px;
 }
 
-/* ✅ FIX ICON 4 PHOTO NOT ZOOMED */
+/* ICON 4 FIX */
 #photo1 img{
 width:100%;
 max-width:350px;
@@ -156,6 +159,42 @@ width:320px;
 max-width:90%;
 border-radius:15px;
 background:black;
+}
+
+/* 📱 IPHONE 11 PRO FIX */
+@media (max-width: 430px) and (max-height: 932px){
+
+.password-box{
+width:90%;
+padding:20px;
+}
+
+.card{
+width:80px;
+padding:12px;
+}
+
+.card img{
+width:45px;
+height:45px;
+}
+
+.box{
+width:95%;
+padding:18px;
+}
+
+video{
+width:100%;
+max-width:100%;
+height:auto;
+}
+
+p{
+font-size:14px;
+line-height:1.6;
+}
+
 }
 
 </style>
@@ -181,22 +220,18 @@ background:black;
 
 <div class="menu">
 
-<!-- ICON 1 LETTER -->
 <div class="card" onclick="openPopup('letter')">
 <img src="assets/icon1.png">
 </div>
 
-<!-- ICON 2 VIDEO -->
 <div class="card" onclick="openPopup('video')">
 <img src="assets/icon2.png">
 </div>
 
-<!-- ICON 3 MEMORIES -->
 <div class="card" onclick="openPopup('memories')">
 <img src="assets/icon3.png">
 </div>
 
-<!-- ICON 4 PHOTO1 -->
 <div class="card" onclick="openPopup('photo1')">
 <img src="assets/icon4.png">
 </div>
@@ -206,7 +241,6 @@ background:black;
 <!-- LETTER -->
 <div id="letter" class="section">
 <div class="box">
-
 <p>
 Happy birthday, loveyy ❤️ Another year older but still my favorite person ever.
 I know we’re far from each other rn, and I wish I could hug you and celebrate with
@@ -215,14 +249,13 @@ and appreciate you. Thank you for being patient with us and for making me feel l
 every single day. I’m always cheering for you from afar. Please take care of yourself
 and enjoy your day, okay? I miss you so much. 🥺❤️
 </p>
-
 </div>
 </div>
 
 <!-- VIDEO -->
 <div id="video" class="section">
 <div class="box">
-<video id="greetingVideo" controls>
+<video id="greetingVideo" controls playsinline preload="auto">
 <source src="assets/greeting-video.mp4" type="video/mp4">
 </video>
 </div>
@@ -243,43 +276,40 @@ and enjoy your day, okay? I miss you so much. 🥺❤️
 <p>
 You are the reason I smile so easily ❤️<br>
 Everything feels better because of you ❤️<br>
-I’ll never stop choosing you ❤️
+I’ll never stop choosing you ❤️<br><br>
 
 I hope you’re doing okay today. I just wanted to remind you that
 you’re doing better than you think, and I’m so proud of you in ways 
 I don’t always say. You make my days brighter just by being in my life, 
 even from a distance. I hope today gives you a reason to smile, even a 
-small one, because you truly deserve it. I really love you Arunee ♡
+small one, because you truly deserve it. I really love you ♡
 </p>
 
 </div>
 </div>
 
-<!-- PHOTO 1 (ICON 4 FIXED) -->
+<!-- PHOTO 1 -->
 <div id="photo1" class="section">
 <div class="box">
 <img src="assets/photo1.jpg">
-
 <p>My handsome baby ❤️</p>
 <p>You are my peace, my love, and my forever person ❤️</p>
-
 </div>
 </div>
 
 </div>
 
-<!-- 🎵 MUSIC -->
+<!-- MUSIC -->
 <audio id="bgMusic" loop>
 <source src="assets/music.mp3" type="audio/mp3">
 </audio>
 
 <script>
 
-/* MUSIC + VIDEO */
 const music = document.getElementById("bgMusic");
 const video = document.getElementById("greetingVideo");
 
-/* PASSWORD + AUTO MUSIC */
+/* PASSWORD */
 function checkPassword(){
 
 if(document.getElementById("password").value==="052404"){
@@ -304,7 +334,7 @@ s.classList.remove("active");
 document.getElementById(id).classList.add("active");
 }
 
-/* CLOSE ON BACKGROUND CLICK */
+/* CLOSE BACKGROUND CLICK */
 document.addEventListener("click",function(e){
 if(e.target.classList.contains("section")){
 document.querySelectorAll(".section").forEach(s=>{
@@ -313,7 +343,7 @@ s.classList.remove("active");
 }
 });
 
-/* 🎥 VIDEO CONTROLS MUSIC */
+/* VIDEO → MUSIC CONTROL (FIXED) */
 if(video){
 
 video.addEventListener("play",()=>{
@@ -321,7 +351,13 @@ music.pause();
 });
 
 video.addEventListener("ended",()=>{
-music.play();
+music.play().catch(()=>{});
+});
+
+video.addEventListener("pause",()=>{
+if(video.currentTime < video.duration){
+music.play().catch(()=>{});
+}
 });
 
 }
