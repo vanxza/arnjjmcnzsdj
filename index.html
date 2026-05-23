@@ -29,7 +29,6 @@ position:fixed;
 width:100%;
 height:100%;
 pointer-events:none;
-overflow:hidden;
 z-index:0;
 }
 
@@ -37,7 +36,7 @@ z-index:0;
 position:absolute;
 top:-20px;
 font-size:18px;
-animation:fall linear infinite;
+animation:fall 8s linear infinite;
 opacity:.8;
 }
 
@@ -45,11 +44,6 @@ opacity:.8;
 0%{transform:translateY(0) rotate(0deg);opacity:0;}
 20%{opacity:1;}
 100%{transform:translateY(120vh) rotate(360deg);opacity:0;}
-}
-
-/* GLOW */
-.glow{
-text-shadow:0 0 10px #ff4d6d,0 0 20px #ff4d6d,0 0 40px #ff4d6d;
 }
 
 /* PASSWORD SCREEN */
@@ -73,7 +67,6 @@ background:rgba(255,255,255,0.18);
 padding:35px;
 border-radius:30px;
 backdrop-filter:blur(12px);
-box-shadow:0 0 25px rgba(255,77,109,.4);
 width:320px;
 }
 
@@ -82,101 +75,51 @@ width:100%;
 padding:14px;
 border:none;
 border-radius:14px;
-margin-top:15px;
 text-align:center;
-font-size:16px;
-outline:none;
+margin-top:10px;
 }
 
 button{
-padding:12px 25px;
+padding:12px 20px;
 margin-top:15px;
 border:none;
 border-radius:25px;
 background:#ff4d6d;
 color:white;
-font-size:16px;
 cursor:pointer;
-box-shadow:0 0 15px #ff4d6d;
-transition:.3s;
-}
-
-button:hover{
-transform:scale(1.05);
 }
 
 /* MAIN */
 #mainContent{
 display:none;
-position:relative;
-z-index:2;
-min-height:100vh;
-padding-bottom:100px;
-}
-
-/* HERO */
-.hero{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
 padding:20px;
-background:
-linear-gradient(rgba(139,30,47,.3),rgba(245,230,211,.3)),
-url('assets/bg.jpg');
-background-size:cover;
-background-position:center;
 }
 
-.hero h1{
-font-size:52px;
-margin-bottom:15px;
-}
-
-.hero p{
-max-width:700px;
-line-height:2;
-font-size:18px;
-}
-
-/* MENU */
+/* ICON MENU */
 .menu{
 display:flex;
 justify-content:center;
-gap:40px;
+gap:20px;
 flex-wrap:wrap;
-margin-top:50px;
+margin-top:30px;
 }
 
-/* CARDS */
 .card{
 background:rgba(255,255,255,0.2);
-padding:30px;
-width:220px;
-border-radius:30px;
+padding:20px;
+border-radius:25px;
 cursor:pointer;
-transition:.4s;
-backdrop-filter:blur(12px);
-box-shadow:0 8px 25px rgba(255,105,180,.35);
-display:flex;
-justify-content:center;
-align-items:center;
+backdrop-filter:blur(10px);
+text-align:center;
+width:120px;
 }
 
-.card:hover{
-transform:translateY(-10px) scale(1.05);
-}
-
-/* ICON IMAGE */
 .card img{
-width:70px;
-height:70px;
-border-radius:15px;
+width:60px;
+height:60px;
 }
 
-/* POPUPS */
+/* POPUP */
 .section{
 display:none;
 position:fixed;
@@ -184,70 +127,49 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.65);
-backdrop-filter:blur(8px);
+background:rgba(0,0,0,0.7);
 justify-content:center;
 align-items:center;
-z-index:999;
+z-index:9999;
 padding:20px;
 }
 
 .section.active{
 display:flex;
-animation:fadeIn .3s ease;
 }
 
-@keyframes fadeIn{
-from{opacity:0; transform:scale(0.95);}
-to{opacity:1; transform:scale(1);}
-}
-
-/* LETTER */
-.letter-box{
+/* BOX */
+.box{
+background:rgba(255,255,255,0.15);
+padding:25px;
+border-radius:20px;
 max-width:700px;
-background:rgba(255,255,255,0.18);
-padding:35px;
-border-radius:30px;
-line-height:2;
-font-size:18px;
-backdrop-filter:blur(12px);
 text-align:center;
+backdrop-filter:blur(10px);
 }
 
-/* GALLERY FIX (NO CUT IMAGES + SAME SIZE) */
-.gallery{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:15px;
-width:100%;
-max-width:900px;
-}
-
+/* GALLERY */
 .gallery img{
 width:100%;
-height:200px;
-object-fit:contain;
-background:white;
-padding:8px;
-border-radius:20px;
-display:block;
+max-width:300px;
+margin:10px;
+border-radius:15px;
+object-fit:cover;
 }
 
-/* VIDEO */
 video{
-width:320px;
-max-width:90%;
-border-radius:25px;
+width:300px;
+border-radius:15px;
 }
 
-/* MUSIC BUTTON */
+/* MUSIC BTN */
 .music-btn{
 position:fixed;
-top:20px;
-right:20px;
-width:55px;
-height:55px;
+top:15px;
+right:15px;
 border-radius:50%;
+width:50px;
+height:50px;
 }
 
 </style>
@@ -261,10 +183,11 @@ border-radius:50%;
 <section id="passwordScreen">
 <div class="password-box">
 
-<h1 class="glow">A surprise made with love ❤️</h1>
+<h2>💖 A surprise for you 💖</h2>
 
 <input type="password" id="password" placeholder="Enter password">
-<button onclick="checkPassword()">Unlock Surprise</button>
+
+<button onclick="checkPassword()">Unlock</button>
 
 <p id="error"></p>
 
@@ -276,84 +199,111 @@ border-radius:50%;
 
 <button class="music-btn" onclick="toggleMusic()">🎵</button>
 
-<section class="hero">
-
-<h1 class="glow">Happy Birthday ❤️</h1>
-
-<p>
-I made this world just for you.
-Even distance can’t change how much I love you.
-</p>
+<h1 style="text-align:center;">Happy Birthday ❤️</h1>
 
 <div class="menu">
 
-<div class="card" onclick="showSection('letterSection')">
-<img src="assets/icon2.png">
-</div>
-
-<div class="card" onclick="showSection('flowerSection')">
+<div class="card" onclick="showSection('letter')">
 <img src="assets/icon1.png">
+<p>Letter</p>
 </div>
 
-<div class="card" onclick="showSection('videoSection')">
+<div class="card" onclick="showSection('photo1')">
+<img src="assets/icon2.png">
+<p>My Baby</p>
+</div>
+
+<div class="card" onclick="showSection('memories')">
 <img src="assets/icon3.png">
+<p>Memories</p>
+</div>
+
+<div class="card" onclick="showSection('video')">
+<img src="assets/icon4.png">
+<p>Video</p>
 </div>
 
 </div>
 
-</section>
+<!-- LETTER POPUP -->
+<div id="letter" class="section active">
+<div class="box">
 
-<!-- LETTER -->
-<section id="letterSection" class="section">
-<div class="letter-box">
-Happy birthday, love ❤️<br><br>
-Even though we’re far, I’m always with you.<br><br>
-I love you always ❤️
+<h2>Happy Birthday, Hubby ❤️</h2>
+
+<p>
+Happy birthday, hubby ❤️ Another year older but still my favorite person ever. I know we’re far from each other rn, and I wish I could hug you and celebrate with you today. But even with the distance, I hope you can still feel how much I love and appreciate you. Thank you for being patient with us and for making me feel loved every single day. I’m always cheering for you from afar. Please take care of yourself and enjoy your day, okay? I miss you so much. 🥺❤️
+</p>
+
 </div>
-</section>
+</div>
 
-<!-- FLOWER (6 PHOTOS FIXED) -->
-<section id="flowerSection" class="section">
+<!-- PHOTO 1 -->
+<div id="photo1" class="section">
+<div class="box">
+
+<img src="assets/photo1.jpg" style="width:100%;border-radius:15px;">
+<p>My handsome baby ❤️</p>
+
+</div>
+</div>
+
+<!-- MEMORIES -->
+<div id="memories" class="section">
+<div class="box">
+
 <div class="gallery">
-
-<img src="assets/photo1.jpg">
 <img src="assets/photo2.jpg">
 <img src="assets/photo3.jpg">
 <img src="assets/photo4.jpg">
 <img src="assets/photo5.jpg">
 <img src="assets/photo6.jpg">
+</div>
+
+<p>
+Every memory with you is my favorite ❤️<br>
+I love you more every single day ❤️<br>
+No distance can change how I feel for you ❤️
+</p>
 
 </div>
-</section>
+</div>
 
 <!-- VIDEO -->
-<section id="videoSection" class="section">
-<video controls>
+<div id="video" class="section">
+<div class="box">
+
+<video id="vid" controls>
 <source src="assets/greeting-video.mp4">
 </video>
-</section>
+
+</div>
+</div>
 
 </div>
 
 <!-- MUSIC -->
-<audio id="bgMusic" loop>
+<audio id="music" loop>
 <source src="assets/music.mp3">
 </audio>
 
 <script>
 
-const music=document.getElementById("bgMusic");
+const music=document.getElementById("music");
+const video=document.getElementById("vid");
 
 /* PASSWORD */
 function checkPassword(){
 
-if(document.getElementById("password").value==="052404"){
+let pass=document.getElementById("password").value;
+
+if(pass==="052404"){
 document.getElementById("passwordScreen").style.display="none";
 document.getElementById("mainContent").style.display="block";
-music.play().catch(()=>{});
+music.play();
 }
 else{
-document.getElementById("error").innerText="Wrong password ❤️";
+document.getElementById("error").innerText="A very special day❤️";
 }
 
 }
@@ -363,30 +313,15 @@ function toggleMusic(){
 music.paused ? music.play() : music.pause();
 }
 
-/* POPUP SECTIONS */
+/* POPUP */
 function showSection(id){
 document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
 document.getElementById(id).classList.add("active");
 }
 
-/* CLOSE ON OUTSIDE CLICK */
-document.addEventListener("click",function(e){
-if(e.target.classList.contains("section")){
-e.target.classList.remove("active");
-}
-});
-
-/* PETALS */
-function createPetal(){
-const p=document.createElement("div");
-p.classList.add("petal");
-p.innerHTML="🌸";
-p.style.left=Math.random()*100+"vw";
-p.style.animationDuration=(Math.random()*5+5)+"s";
-document.querySelector(".petals").appendChild(p);
-setTimeout(()=>p.remove(),10000);
-}
-setInterval(createPetal,200);
+/* VIDEO CONTROL */
+video?.addEventListener("play",()=>music.pause());
+video?.addEventListener("ended",()=>music.play());
 
 </script>
 
