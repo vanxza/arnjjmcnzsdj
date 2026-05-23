@@ -6,35 +6,37 @@
 
 <title>Happy Birthday ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
 <style>
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
+font-family:"Times New Roman", Times, serif;
 }
 
 body{
-background:linear-gradient(to bottom,#ffdde8,#ffd1e3,#ffc2da);
-overflow-x:hidden;
 color:white;
+overflow-x:hidden;
 }
 
-/* PASSWORD SCREEN */
-#passwordScreen{
+/* BACKGROUND (STAYS SAME ALWAYS) */
+#passwordScreen,
+#mainContent{
 height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
 background:
 linear-gradient(rgba(139,30,47,.4),rgba(245,230,211,.4)),
 url('assets/bg.jpg');
 background-size:cover;
 background-position:center;
+}
+
+/* PASSWORD */
+#passwordScreen{
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
 }
 
 .password-box{
@@ -53,6 +55,7 @@ border:none;
 border-radius:12px;
 text-align:center;
 margin-top:10px;
+font-family:"Times New Roman", Times, serif;
 }
 
 button{
@@ -63,6 +66,7 @@ border-radius:20px;
 background:#ff4d6d;
 color:white;
 cursor:pointer;
+font-family:"Times New Roman", Times, serif;
 }
 
 /* MAIN */
@@ -71,7 +75,7 @@ display:none;
 padding:20px;
 }
 
-/* ICON MENU */
+/* MENU */
 .menu{
 display:flex;
 justify-content:center;
@@ -95,7 +99,7 @@ width:55px;
 height:55px;
 }
 
-/* POPUP SYSTEM */
+/* POPUPS */
 .section{
 display:none;
 position:fixed;
@@ -108,49 +112,41 @@ justify-content:center;
 align-items:center;
 padding:20px;
 z-index:9999;
+cursor:pointer;
 }
 
 .section.active{
 display:flex;
 }
 
-/* POPUP BOX */
 .box{
 background:rgba(255,255,255,0.15);
-padding:20px;
+padding:25px;
 border-radius:20px;
-max-width:750px;
+max-width:800px;
 text-align:center;
 backdrop-filter:blur(10px);
+cursor:default;
 }
 
-/* IMAGES */
-img{
-max-width:100%;
-border-radius:15px;
-}
-
+/* GALLERY */
 .gallery{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
 gap:10px;
 }
 
-/* VIDEO FIX */
+img{
+max-width:100%;
+border-radius:15px;
+}
+
+/* VIDEO */
 video{
 width:320px;
 max-width:90%;
 border-radius:15px;
 background:black;
-}
-
-/* CLOSE BY CLICK */
-.section{
-cursor:pointer;
-}
-
-.box{
-cursor:default;
 }
 
 </style>
@@ -174,50 +170,55 @@ cursor:default;
 <!-- MAIN -->
 <div id="mainContent">
 
-<!-- ICON MENU (ONLY SHOW AFTER PASSWORD) -->
-<div class="menu" id="mainMenu">
+<div class="menu">
 
+<!-- ICON 1 LETTER -->
 <div class="card" onclick="openPopup('letter')">
 <img src="assets/icon1.png">
 </div>
 
-<div class="card" onclick="openPopup('photo1')">
+<!-- ICON 2 VIDEO -->
+<div class="card" onclick="openPopup('video')">
 <img src="assets/icon2.png">
 </div>
 
+<!-- ICON 3 MEMORIES -->
 <div class="card" onclick="openPopup('memories')">
 <img src="assets/icon3.png">
 </div>
 
-<div class="card" onclick="openPopup('video')">
+<!-- ICON 4 PHOTO 1 -->
+<div class="card" onclick="openPopup('photo1')">
 <img src="assets/icon4.png">
 </div>
 
 </div>
 
-<!-- LETTER (ICON 1) -->
+<!-- LETTER -->
 <div id="letter" class="section">
 <div class="box">
+
 <p>
-Happy birthday, hubby ❤️ Another year older but still my favorite person ever. I miss you always 🥺❤️
+Happy birthday, love ❤️ Another year older but still my favorite person ever hahaha. I know we’re far from each other rn, and I wish I could hug you and celebrate with you today. But even with the distance, I hope you can still feel how much I love and appreciate you. Thank you for being patient with us and for making me feel loved every single day. I’m always cheering for you from afar. Please take care of yourself and enjoy your day, okay? I miss you so much. 🥺❤️
 </p>
+
 </div>
 </div>
 
-<!-- PHOTO 1 (ICON 2) -->
-<div id="photo1" class="section">
+<!-- VIDEO -->
+<div id="video" class="section">
 <div class="box">
-<img src="assets/photo1.jpg">
-<p>my handsome baby ❤️</p>
+<video controls>
+<source src="assets/greeting-video.mp4" type="video/mp4">
+</video>
 </div>
 </div>
 
-<!-- MEMORIES (ICON 3) -->
+<!-- MEMORIES -->
 <div id="memories" class="section">
 <div class="box">
 
 <div class="gallery">
-<img src="assets/photo1.jpg">
 <img src="assets/photo2.jpg">
 <img src="assets/photo3.jpg">
 <img src="assets/photo4.jpg">
@@ -226,34 +227,26 @@ Happy birthday, hubby ❤️ Another year older but still my favorite person eve
 </div>
 
 <p>
-You are my happiness ❤️<br>
-I love you endlessly ❤️<br>
-Distance will never break us ❤️
+You are deeply loved ❤️<br>
+You are my happiness always ❤️<br>
+No distance can change us ❤️
 </p>
 
 </div>
 </div>
 
-<!-- VIDEO (ICON 4) -->
-<div id="video" class="section">
+<!-- PHOTO 1 -->
+<div id="photo1" class="section">
 <div class="box">
-<video id="vid" controls>
-<source src="assets/greeting-video.mp4" type="video/mp4">
-</video>
+<img src="assets/photo1.jpg">
+<p>my handsome baby ❤️</p>
+<p>You are loved more than you know ❤️</p>
 </div>
 </div>
 
 </div>
-
-<!-- MUSIC -->
-<audio id="music" loop>
-<source src="assets/music.mp3">
-</audio>
 
 <script>
-
-const music=document.getElementById("music");
-const video=document.getElementById("vid");
 
 /* PASSWORD */
 function checkPassword(){
@@ -261,7 +254,6 @@ function checkPassword(){
 if(document.getElementById("password").value==="052404"){
 document.getElementById("passwordScreen").style.display="none";
 document.getElementById("mainContent").style.display="block";
-music.play().catch(()=>{});
 }
 else{
 document.getElementById("error").innerText="A very special day❤️";
@@ -269,7 +261,7 @@ document.getElementById("error").innerText="A very special day❤️";
 
 }
 
-/* OPEN POPUP (ONLY WHEN CLICKED) */
+/* OPEN POPUP */
 function openPopup(id){
 document.querySelectorAll(".section").forEach(s=>{
 s.classList.remove("active");
@@ -277,20 +269,14 @@ s.classList.remove("active");
 document.getElementById(id).classList.add("active");
 }
 
-/* CLICK OUTSIDE CLOSE POPUP */
+/* CLOSE WHEN CLICK BACKGROUND */
 document.addEventListener("click",function(e){
-
 if(e.target.classList.contains("section")){
 document.querySelectorAll(".section").forEach(s=>{
 s.classList.remove("active");
 });
 }
-
 });
-
-/* VIDEO MUSIC CONTROL */
-video?.addEventListener("play",()=>music.pause());
-video?.addEventListener("ended",()=>music.play());
 
 </script>
 
