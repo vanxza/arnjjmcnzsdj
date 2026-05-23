@@ -1,10 +1,10 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday, Hubby ❤️</title>
+
+<title>Happy Birthday ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -38,13 +38,21 @@ position:absolute;
 top:-20px;
 font-size:18px;
 animation:fall linear infinite;
-opacity:0.8;
+opacity:.8;
 }
 
 @keyframes fall{
-0%{transform:translateY(0) rotate(0deg);opacity:0;}
-20%{opacity:1;}
-100%{transform:translateY(120vh) rotate(360deg);opacity:0;}
+0%{
+transform:translateY(0) rotate(0deg);
+opacity:0;
+}
+20%{
+opacity:1;
+}
+100%{
+transform:translateY(120vh) rotate(360deg);
+opacity:0;
+}
 }
 
 /* GLOW */
@@ -63,7 +71,8 @@ justify-content:center;
 align-items:center;
 flex-direction:column;
 text-align:center;
-background:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.8)),
+background:
+linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.8)),
 url('https://images.unsplash.com/photo-1518199266791-5375a83190b7');
 background-size:cover;
 background-position:center;
@@ -104,11 +113,13 @@ box-shadow:0 0 15px #ff4d6d;
 /* MAIN */
 #mainContent{
 display:none;
-padding-bottom:100px;
 position:relative;
 z-index:2;
+min-height:100vh;
+padding-bottom:100px;
 }
 
+/* HERO */
 .hero{
 min-height:100vh;
 display:flex;
@@ -117,14 +128,15 @@ justify-content:center;
 align-items:center;
 text-align:center;
 padding:20px;
-background:linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.8)),
+background:
+linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.8)),
 url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2');
 background-size:cover;
 background-position:center;
 }
 
 .hero h1{
-font-size:55px;
+font-size:50px;
 margin-bottom:15px;
 }
 
@@ -134,7 +146,7 @@ line-height:2;
 font-size:18px;
 }
 
-/* MENU */
+/* ICON MENU */
 .menu{
 display:flex;
 justify-content:center;
@@ -158,11 +170,12 @@ box-shadow:0 0 20px rgba(255,77,109,.3);
 transform:translateY(-10px) scale(1.05);
 }
 
-.card .icon{
+.icon{
 font-size:70px;
 margin-bottom:10px;
 }
 
+/* SECTION */
 .section{
 display:none;
 padding:100px 20px;
@@ -171,15 +184,15 @@ text-align:center;
 
 /* LETTER */
 .letter-box{
-max-width:800px;
+max-width:700px;
 margin:auto;
 background:rgba(255,255,255,0.08);
-padding:40px;
-border-radius:30px;
-line-height:2.2;
+padding:35px;
+border-radius:25px;
+line-height:2;
 font-size:18px;
 backdrop-filter:blur(10px);
-box-shadow:0 0 25px rgba(255,77,109,.3);
+box-shadow:0 0 20px rgba(255,77,109,.3);
 }
 
 /* GALLERY */
@@ -192,24 +205,18 @@ margin-top:40px;
 }
 
 .gallery img{
-width:220px;
-height:280px;
-object-fit:cover;
+width:260px;
+max-width:90%;
 border-radius:20px;
 box-shadow:0 0 20px rgba(255,77,109,.5);
-transition:.4s;
-}
-
-.gallery img:hover{
-transform:scale(1.05);
 }
 
 /* VIDEO */
 video{
 width:320px;
 max-width:90%;
-border-radius:25px;
 margin-top:30px;
+border-radius:25px;
 box-shadow:0 0 25px rgba(255,77,109,.6);
 }
 
@@ -218,13 +225,11 @@ box-shadow:0 0 25px rgba(255,77,109,.6);
 position:fixed;
 top:20px;
 right:20px;
-z-index:999;
-background:#ff4d6d;
-border:none;
 width:55px;
 height:55px;
 border-radius:50%;
 font-size:22px;
+z-index:999;
 }
 
 </style>
@@ -235,7 +240,7 @@ font-size:22px;
 <!-- PETALS -->
 <div class="petals"></div>
 
-<!-- PASSWORD -->
+<!-- PASSWORD SCREEN -->
 <section id="passwordScreen">
 
 <div class="password-box">
@@ -263,73 +268,73 @@ font-size:22px;
 <h1 class="glow">Happy Birthday, Hubby ❤️</h1>
 
 <p>
-Hi love, this little world was made just for you.
-I wanted to create something that could remind you
-how deeply loved you are every single day.
+I made this little world just for you.
+No matter how far we are,
+you will always be my favorite person ❤️
 </p>
 
 <div class="menu">
 
+<!-- LETTER -->
 <div class="card" onclick="showSection('letterSection')">
 <div class="icon">💌</div>
-<h2>Love Letter</h2>
+<h2>Letter</h2>
 </div>
 
+<!-- FLOWER -->
 <div class="card" onclick="showSection('flowerSection')">
 <div class="icon">🌸</div>
-<h2>Memories</h2>
+<h2>Flower</h2>
 </div>
 
+<!-- HEART -->
 <div class="card" onclick="showSection('videoSection')">
-<div class="icon">🎥</div>
-<h2>Video Greeting</h2>
+<div class="icon">❤️</div>
+<h2>Heart</h2>
 </div>
 
 </div>
 
 </section>
 
-<!-- LETTER -->
+<!-- LETTER SECTION -->
 <section id="letterSection" class="section">
 
-<h1 class="glow">To My Favorite Person ❤️</h1>
+<h1 class="glow">For You ❤️</h1>
 
 <div class="letter-box">
 
-Happy birthday, my love.
+Happy birthday, love ❤️
 <br><br>
-I know I don’t always say things perfectly,
-but I hope you always remember how much you mean to me.
+
+Even though we’re far from each other right now,
+you still make my days feel complete.
 <br><br>
-Thank you for loving me gently,
-for staying beside me,
-and for making even ordinary days feel special.
+
+Thank you for loving me,
+understanding me,
+and staying beside me no matter the distance.
 <br><br>
-You became my comfort,
-my peace,
-and the person I want to tell everything to.
+
+I can’t wait for the day
+I finally get to celebrate your birthday beside you.
 <br><br>
-I’m so proud of the person you are becoming,
-and I’ll always support you no matter what happens.
-<br><br>
-I hope this birthday brings you happiness,
-peace of mind,
-and all the success your heart wants.
-<br><br>
-And even when life gets hard,
-I hope you never forget that you’ll always have me.
-<br><br>
-I love you endlessly.
-Happy birthday, hubby ❤️
+
+I love you always ❤️
 
 </div>
 
 </section>
 
-<!-- FLOWERS -->
+<!-- FLOWER SECTION -->
 <section id="flowerSection" class="section">
 
-<h1 class="glow">Our Favorite Memories 🌸</h1>
+<h1 class="glow">Our Memories 🌸</h1>
+
+<p style="margin-top:15px;font-size:18px;">
+Happy birthday, my handsome baby ❤️<br>
+I hope this day reminds you how loved you are.
+</p>
 
 <div class="gallery">
 
@@ -344,10 +349,10 @@ Happy birthday, hubby ❤️
 
 </section>
 
-<!-- VIDEO -->
+<!-- VIDEO SECTION -->
 <section id="videoSection" class="section">
 
-<h1 class="glow">A Message Just For You 🎥</h1>
+<h1 class="glow">A Message Just For You ❤️</h1>
 
 <video id="greetingVideo" controls>
 <source src="assets/greeting-video.mp4" type="video/mp4">
@@ -380,7 +385,9 @@ document.getElementById("mainContent").style.display="block";
 music.play().catch(()=>{});
 
 }else{
+
 document.getElementById("error").innerText="Hint: A very special date ❤️";
+
 }
 
 }
@@ -396,7 +403,7 @@ music.pause();
 
 }
 
-/* VIDEO CONTROL */
+/* VIDEO */
 video.addEventListener("play",()=>{
 music.pause();
 });
@@ -412,31 +419,42 @@ music.play();
 /* SHOW SECTION */
 function showSection(id){
 
-const sections=document.querySelectorAll('.section');
+const sections=document.querySelectorAll(".section");
 
 sections.forEach(section=>{
-section.style.display='none';
+section.style.display="none";
 });
 
 const selected=document.getElementById(id);
-selected.style.display='block';
+
+selected.style.display="block";
 
 window.scrollTo({
 top:selected.offsetTop,
-behavior:'smooth'
+behavior:"smooth"
 });
 
 }
 
 /* PETALS */
 function createPetal(){
-const p=document.createElement('div');
-p.classList.add('petal');
-p.innerHTML='🌸';
-p.style.left=Math.random()*100+'vw';
-p.style.animationDuration=(Math.random()*5+5)+'s';
-document.querySelector('.petals').appendChild(p);
-setTimeout(()=>p.remove(),10000);
+
+const p=document.createElement("div");
+
+p.classList.add("petal");
+
+p.innerHTML="🌸";
+
+p.style.left=Math.random()*100+"vw";
+
+p.style.animationDuration=(Math.random()*5+5)+"s";
+
+document.querySelector(".petals").appendChild(p);
+
+setTimeout(()=>{
+p.remove();
+},10000);
+
 }
 
 setInterval(createPetal,200);
@@ -445,4 +463,3 @@ setInterval(createPetal,200);
 
 </body>
 </html>
-```
